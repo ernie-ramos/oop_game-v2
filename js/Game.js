@@ -1,6 +1,9 @@
 /* Treehouse FSJS Techdegree
  * Project 4 - OOP Game App
  * Game.js */
+
+/* Handle starting and ending the game, interactions, getting a random phrase,
+   checking for a win, and removing a life from the scoreboard */
 class Game {
   constructor() {
     this.missed = 0;
@@ -8,22 +11,18 @@ class Game {
     this.activePhrase = null;
   }
 
+
   /**
    * Creates phrases for use in game
-   * @return {array} An array of phrases that could be used in the game
+   * @return {array} An array of phrases that can be used in the game
    */
   createPhrases() {
-    const a = 'all over the map';
-    const b = 'before you know it';
-    const c = 'blow off steam';
-    const d = 'break a leg';
-    const e = 'call it a day';
     return [
-      new Phrase(a),
-      new Phrase(b),
-      new Phrase(c),
-      new Phrase(d),
-      new Phrase(e),
+      new Phrase('all over the map'),
+      new Phrase('before you know it'),
+      new Phrase('blow off steam'),
+      new Phrase('break a leg'),
+      new Phrase('call it a day'),
     ];
   }
 

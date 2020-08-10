@@ -11,10 +11,6 @@
 
 // new instance of `Game` class
 const game = new Game();
-game.getRandomPhrase().addPhraseToDisplay();
-
-// console.log(game.activePhrase);
-
 
 // event listeners
 

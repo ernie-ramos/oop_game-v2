@@ -11,6 +11,30 @@ class Game {
     this.activePhrase = null;
   }
 
+  // create a `startGame()` method in the Game class
+  startGame() {
+    // hide the start screen overlay (the `div` element with an `id` of `overlay`)
+    document.getElementById('overlay').style.display = 'none';
+
+    // calls the `getRandomPhrase()` method to select a Phrase object from the Game object’s array of phrases
+    // adds the phrase to the gameboard by calling the `addPhraseToDisplay()` method (which is a method on the 
+    // Phrase class) on the selected Phrase object.
+    // The selected phrase should be stored in the Game’s `activePhrase` property, so it can be
+    // easily accessed throughout the game.
+    this.activePhrase = this.getRandomPhrase();
+    this.activePhrase.addPhraseToDisplay();
+
+    // const getRandAndAddPhrase = () => {
+    //   const phrase = this.getRandomPhrase();
+    //   phrase.addPhraseToDisplay();
+    //   return phrase;
+    // };
+    // this.activePhrase = getRandAndAddPhrase();
+
+
+
+
+  }
 
   /**
    * Creates phrases for use in game
@@ -32,6 +56,5 @@ class Game {
    */
   getRandomPhrase() {
     return this.phrases[Math.floor(Math.random() * 5)];
-    //Math.floor(Math.random() * 5 )
   }
 }

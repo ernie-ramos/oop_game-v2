@@ -79,7 +79,6 @@ class Game {
     const space = document.getElementsByClassName('space');
     while (space.length > 0) {
       for (const li of space) {
-        console.log(li.parentNode);
         const parent = li.parentNode;
         parent.removeChild(li);
       }

@@ -9,26 +9,48 @@ class Phrase {
   }
 
   /**
-   * This method adds letter placeholders to the display when the game starts. 
-   * Each letter is presented by an empty box, one list item for each letter. 
-   * 
-   * See the example_phrase_html.txt file for an example of what the render HTML for a phrase should look like when * * the game starts, including any `id` or `class` attributes needed. 
-   * 
-   * When the player correctly guesses a letter, the
-   * empty box is replaced with the matched letter (see the `showMatchedLetter()` method below).
-   * Make sure the phrase displayed on the screen uses the `letter` CSS class for letters and the
-   * `space` CSS class for space.
-   */
-  addPhraseToDisplay() {
+  * Checks if passed letter is in phrase
+  * @param (obj) letter - Letter to check
+  */
+  checkLetter(letter) {
+    return this.phrase.includes(letter.textContent);
+  };
+
+  /**
+  * Displays passed letter on screen after a match is found
+  * @param (string) letter - Letter to display
+  */
+  showMatchedLetter(letter) {
+    const list = document.getElementsByClassName('hide letter');
+    for (const li of list) {
+      if (li.textContent === letter.textContent) {
+        li.className = 'show';
+        letter.classList.add("chosen");
+        letter.disabled = true;
+      }
+    }
+    // called twice to fix bug: the same consecutive letter was not being revealed, i.e., in the word `call` guessing l would only display the first l.
+    for (const li of list) {
+      if (li.textContent === letter.textContent) {
+        li.className = 'show';
+        letter.classList.add("chosen");
+        letter.disabled = true;
+      }
+    }
+
+  };
+
+  /**
+  * Displays passed letter on screen after a match is found
+  * @param (string) letter - Letter to display
+  */
+  addPhraseToDisplay(phraseObj) {
     const ul = document.querySelector('.main-container ul');
 
-    const game = new Game();
-    const phrase = game.getRandomPhrase();
-    const indPhrase = phrase.phrase;
-
+    const phrase = phraseObj.phrase;
     let phraseArr = [];
-    for (let i = 0; i < indPhrase.length; i++) {
-      phraseArr.push(indPhrase[i]);
+    for (let i = 0; i < phrase.length; i++) {
+      phraseArr.push(phrase[i]);
     }
 
     phraseArr.forEach((char) => {
@@ -48,22 +70,3 @@ class Phrase {
   }
 }
 
-// all over the map
-// before you know it
-// blow off steam
-// break a leg
-// call it a day
-// cat nap
-// disco nap
-// get the hang of it
-// give props to
-// head over heels
-// here and there
-// hit me up
-// keep me in the loop
-// keep me posted
-// not for nothing
-// ruffle feathers
-// sea legs
-// take the wind out of your sails
-// two peas in a pod

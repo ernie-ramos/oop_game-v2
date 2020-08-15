@@ -65,17 +65,26 @@ class Game {
     this.checkForWin();
   }
 
-  startGame() {
+  gameReset() {
     this.missed = 0;
     this.activePhrase = null;
 
-    const list = document.getElementsByClassName('show');
-    while (list.length > 0) {
-      for (const li of list) {
+    const listWin = document.getElementsByClassName('show');
+    while (listWin.length > 0) {
+      for (const li of listWin) {
         const parent = li.parentNode;
         parent.removeChild(li);
       }
     }
+
+    const listLose = document.getElementsByClassName('hide');
+    while (listLose.length > 0) {
+      for (const li of listLose) {
+        const parent = li.parentNode;
+        parent.removeChild(li);
+      }
+    }
+
     const space = document.getElementsByClassName('space');
     while (space.length > 0) {
       for (const li of space) {
@@ -95,7 +104,11 @@ class Game {
     for (const heart of hearts) {
       heart.firstElementChild.src = "images/liveHeart.png";
     }
+  }
 
+  startGame() {
+
+    this.gameReset();
 
 
     document.getElementById('overlay').style.display = 'none';

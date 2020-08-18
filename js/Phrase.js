@@ -37,7 +37,6 @@ class Phrase {
         letter.disabled = true;
       }
     }
-
   };
 
   /**

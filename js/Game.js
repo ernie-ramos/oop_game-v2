@@ -11,6 +11,12 @@ class Game {
     this.activePhrase = null;
   }
 
+  handleInteraction(letter) {
+    const letterPresent = this.activePhrase.checkLetter(letter);
+    letterPresent ? this.activePhrase.showMatchedLetter(letter) : this.removeLife(letter);
+    this.checkForWin();
+  }
+
   /**
   * Checks for winning move
   * @return {boolean} True if game has been won, false if game wasn't won
@@ -59,12 +65,6 @@ class Game {
     gameWon ? message.textContent = "You Win! 🤗" : message.textContent = "You Lose 😔";
   };
 
-  handleInteraction(letter) {
-    const letterPresent = this.activePhrase.checkLetter(letter);
-    letterPresent ? this.activePhrase.showMatchedLetter(letter) : this.removeLife(letter);
-    this.checkForWin();
-  }
-
   gameReset() {
     this.missed = 0;
     this.activePhrase = null;
@@ -107,9 +107,7 @@ class Game {
   }
 
   startGame() {
-
     this.gameReset();
-
 
     document.getElementById('overlay').style.display = 'none';
     const phrase = this.getRandomPhrase();

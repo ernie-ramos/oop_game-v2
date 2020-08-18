@@ -19,7 +19,7 @@ class Game {
 
   /**
   * Checks for winning move
-  * @return {boolean} True if game has been won, false if game wasn't won
+  * @return {function} `gameWon` is true if game has been won, false if game wasn't won
   */
   checkForWin() {
     let gameWon = null;
@@ -42,8 +42,8 @@ class Game {
   */
   removeLife(letter) {
     this.missed += 1;
-    const heartIndex = this.missed - 1;
 
+    const heartIndex = this.missed - 1;
     const hearts = document.getElementsByClassName('tries');
     const heartImage = hearts[heartIndex].firstElementChild;
     heartImage.src = "images/lostHeart.png";
@@ -68,6 +68,14 @@ class Game {
   gameReset() {
     this.missed = 0;
     this.activePhrase = null;
+
+    const pressEnterList = document.getElementsByClassName('header reset');
+    while (pressEnterList.length > 0) {
+      for (const li of pressEnterList) {
+        const parent = li.parentNode;
+        parent.removeChild(li);
+      }
+    }
 
     const listWin = document.getElementsByClassName('show');
     while (listWin.length > 0) {

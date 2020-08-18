@@ -44,6 +44,13 @@ class Phrase {
   * @param (string) letter - Letter to display
   */
   addPhraseToDisplay(phraseObj) {
+    const banner = document.getElementById('banner');
+    const pressEnter = document.createElement('h3');
+    pressEnter.className = 'header reset';
+    pressEnter.textContent = 'Press Return/Enter to Reset Game';
+    banner.appendChild(pressEnter);
+
+
     const ul = document.querySelector('.main-container ul');
 
     const phrase = phraseObj.phrase;
